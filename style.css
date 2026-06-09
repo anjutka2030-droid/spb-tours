@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #f0f6fa; 
+    color: #1e3246 !important; 
+    padding-bottom: 30px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 15px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(88, 151, 173, 0.1); 
+    margin-bottom: 15px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1e3246 !important;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 14px;
+    color: #5a738e;
+}
+
+/* КНОПКИ-ФИЛЬТРЫ В ДВА РЯДА С ВОЗДУХОМ */
+.filters-container {
+    display: flex;
+    flex-wrap: wrap; /* Магия двух рядов: кнопки сами переносятся вниз */
+    gap: 8px; /* Уютные отступы между кнопками */
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: 0 auto 25px auto; /* Большой нижний отступ дает много воздуха перед каталогом */
+    justify-content: center; /* Центрируем кнопки на экране */
+}
+
+.btn-filter {
+    background-color: #ffffff;
+    color: #5897ad;
+    border: 1.5px solid #5897ad;
+    padding: 10px 16px; /* Крупные, удобные для нажатия пальцем кнопки */
+    border-radius: 25px; /* Идеально круглые края */
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-filter.active {
+    background-color: #ff6f00;
+    color: #ffffff;
+    border-color: #ff6f00;
+    box-shadow: 0 4px 10px rgba(255, 111, 0, 0.25);
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(88, 151, 173, 0.12);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img {
+    width: 100%;
+    height: 180px; 
+    object-fit: cover; 
+}
+
+.card-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1e3246 !important;
+    line-height: 1.25;
+    margin-bottom: 4px;
+}
+
+.card-trigger {
+    font-size: 12px;
+    color: #3a768c;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.price-container {
+    background: #f4f9fc; 
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #e1eff7;
+}
+
+.price-old {
+    font-size: 11px; 
+    color: #5a738e; 
+    text-decoration: line-through;
+    white-space: nowrap; /* Склеиваем старую цену со значком рубля */
+}
+
+/* Склеиваем новую цену со знаком рубля намертво */
+.price-highlight {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ff6f00; 
+    margin-top: 1px;
+    white-space: nowrap; /* Магия: цена и рубль больше никогда не разделятся */
+}
+
+.price-details {
+    font-size: 11px; 
+    color: #1e3246 !important; 
+    margin-top: 4px; 
+    border-top: 1px solid #e1eff7; 
+    padding-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.price-details span {
+    white-space: nowrap; /* Склеиваем льготные и детские цены тоже */
+}
+
+.card-buttons {
+    display: flex;
+    gap: 6px;
+    margin-top: auto;
+}
+
+.btn-book {
+    flex-grow: 2;
+    text-align: center;
+    background-color: #ff6f00; 
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(255, 111, 0, 0.15);
+}
+
+.btn-more {
+    flex-grow: 1;
+    background: none;
+    border: 1.5px solid #5897ad;
+    color: #5897ad;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 92%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+.modal-close { position: absolute; top: 10px; right: 15px; font-size: 26px; color: #5897ad; cursor: pointer; }
+.modal-desc-text { 
+    font-size: 14px; 
+    color: #1e3246 !important; 
+    line-height: 1.45; 
+    white-space: pre-line; 
+    margin-top: 12px; 
+}
+
+@media (max-width: 600px) {
+    header { padding: 15px 10px; margin-bottom: 10px; }
+    header h1 { font-size: 18px; }
+    header p { font-size: 12px; }
+
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 6px;
+        padding: 0 6px;
+    }
+
+    .card { border-radius: 8px; }
+    .card-img { height: 95px; } 
+    .card-content { padding: 8px; }
+    
+    .card-title { font-size: 11px; margin-bottom: 2px; line-height: 1.2; }
+    .card-trigger { font-size: 10px; margin-bottom: 4px; }
+
+    .price-container { padding: 5px; margin-bottom: 6px; border-radius: 5px; }
+    .price-old { font-size: 9px; }
+    .price-highlight { font-size: 11px; } /* На смартфонах чуть сжали шрифт, чтобы цена гарантированно сидела монолитом */
+    .price-details { font-size: 9px; padding-top: 3px; margin-top: 3px; gap: 0; }
+
+    .card-buttons { gap: 4px; }
+    .btn-book, .btn-more { padding: 6px 2px; font-size: 10px; border-radius: 4px; }
+}

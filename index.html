@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экскурсии по Санкт-Петербургу</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Каталог экскурсий</h1>
+        <p>Выберите тур и забронируйте в 1 клик</p>
+    </header>
+
+         <!-- ОБНОВЛЕННЫЙ СБАЛАНСИРОВАННЫЙ БЛОК ФИЛЬТРОВ 3 НА 3 -->
+    <div class="filters-container">
+        <button class="btn-filter active" onclick="filterCatalog('all')">Все туры</button>
+        <button class="btn-filter" onclick="filterCatalog('water')">Водные круизы</button>
+        <button class="btn-filter" onclick="filterCatalog('kater')">Аренда катеров</button>
+        <button class="btn-filter" onclick="filterCatalog('bus')">Автобусные</button>
+        <button class="btn-filter" onclick="filterCatalog('walk')">Пешеходные</button>
+        <button class="btn-filter" onclick="filterCatalog('night')">Развод мостов</button>
+    </div>
+
+
+
+    <!-- Сетка с карточками -->
+    <main id="catalog" class="catalog-grid"></main>
+
+    <!-- Элемент для плавного всплывающего окна подробностей -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

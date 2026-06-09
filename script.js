@@ -1,0 +1,95 @@
+// 1. НАСТРОЙКА ТВОИХ РЕАЛЬНЫХ ССЫЛОК (Всё подключено под ключ!)
+const INSTAGRAM_DIRECT = "https://ig.me"; 
+const MY_VK_LINK = "https://vk.me";          
+const MY_MAX_LINK = "https://max.ru"; 
+
+// Умная функция: сама поймет, откуда пришел человек
+function getBookingLink(tourTitle) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const source = urlParams.get('from'); 
+    const message = encodeURIComponent(`Здравствуйте! Хочу забронировать экскурсию: "${tourTitle}"`);
+    
+    if (source === 'vk') {
+        return `${MY_VK_LINK}?ref_source=${message}`; 
+    } else if (source === 'max') {
+        return `${MY_MAX_LINK}`;
+    } else {
+        // Для Инстаграма, Трэдса (threads) и всех остальных по умолчанию откроется твой Директ!
+        return `${INSTAGRAM_DIRECT}`; 
+    }
+}
+
+
+// Функция, которая собирает карточки на странице и фильтрует их
+// Функция, которая собирает карточки на странице и фильтрует их по одной или нескольким категориям
+function renderCatalog(filterCategory = 'all') {
+    const catalogContainer = document.getElementById('catalog');
+    if (!catalogContainer) return;
+    catalogContainer.innerHTML = ""; 
+    
+    excursions.forEach(tour => {
+        // Умная проверка: ищет совпадение, даже если у тура прописано несколько категорий через пробел
+        if (filterCategory !== 'all' && !tour.category.includes(filterCategory)) return;
+        
+        const targetLink = getBookingLink(tour.title);
+        const oldPriceHtml = (tour.priceOld && tour.priceOld !== tour.priceNew) ? `<div class="price-old">Обычная цена: ${tour.priceOld} ₽</div>` : '';
+        const detailsHtml = (tour.priceLgt || tour.priceChd) ? `<div class="price-details">${tour.priceLgt ? `<span>🎓 Льготный: ${tour.priceLgt} ₽</span>` : ''}${tour.priceChd ? `<span>👶 Детский: ${tour.priceChd} ₽</span>` : ''}</div>` : '';
+        
+        catalogContainer.innerHTML += `
+            <div class="card">
+                <img src="${tour.image}" alt="${tour.title}" class="card-img">
+                <div class="card-content">
+                    <div class="card-title" style="color: #1e3246 !important;">${tour.title}</div>
+                    <div class="card-trigger">${tour.trigger}</div>
+                    <div class="price-container">
+                        <div style="font-size:11px; color:#1e3246; font-weight:600; margin-bottom:6px; padding-bottom:4px; border-bottom:1px dashed #c8e1f0;">🕒 ${tour.schedule}</div>
+                        ${oldPriceHtml}
+                        <div class="price-highlight">❤️ Для подписчиков: ${tour.priceNew} ₽</div>
+                        ${detailsHtml}
+                    </div>
+                    <div class="card-buttons">
+                        <button class="btn-more" onclick="openModal(${tour.id})">Подробнее</button>
+                        <a href="${targetLink}" class="btn-book">Забронировать</a>
+                    </div>
+                </div>
+            </div>`;
+    });
+}
+
+
+function filterCatalog(category) {
+    renderCatalog(category);
+    const buttons = document.querySelectorAll('.btn-filter');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+}
+
+function openModal(id) {
+    const tour = excursions.find(t => t.id === id);
+    if (!tour) return;
+    const modalContent = document.getElementById('modal-content');
+    const targetLink = getBookingLink(tour.title);
+    const modalDetailsHtml = (tour.priceLgt || tour.priceChd) ? `<div style="font-size:12px; color:#1e3246; margin-top:8px; display:flex; gap:15px;">${tour.priceLgt ? `<span>🎓 : ${tour.priceLgt} ₽</span>` : ''}${tour.priceChd ? `<span>👶 : ${tour.priceChd} ₽</span>` : ''}</div>` : '';
+    
+    modalContent.innerHTML = `
+        <h2 style="font-size:18px; color:#1e3246; font-weight:bold;">${tour.title}</h2>
+        <div style="font-size:13px; color:#3a768c; font-weight:bold; margin-top:4px;">${tour.trigger}</div>
+        <img src="${tour.image}" style="width:100%; height:180px; object-fit:cover; border-radius:8px; margin-top:10px;">
+        <div style="font-size:13px; color:#1e3246; background:#f4f9fc; padding:8px; border-radius:6px; margin-top:10px; font-weight:600;">📅 Расписание: ${tour.schedule}</div>
+        <div class="modal-desc-text" style="color: #1e3246 !important;">${tour.description}</div>
+        ${modalDetailsHtml}
+        <div style="margin-top:15px; padding-top:12px; border-top:1px solid #e1eff7; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div style="font-size:15px; font-weight:bold; color:#ff6f00;">Цена: ${tour.priceNew} ₽</div>
+            <a href="${targetLink}" class="btn-book" style="margin-top:0; text-align:center; padding:8px 15px; font-size:12px;">Забронировать тур</a>
+        </div>`;
+    document.getElementById('modal').classList.add('active');
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('active'); }
+window.onclick = function(event) { if (event.target === document.getElementById('modal')) closeModal(); }
+
+// ВОТ ЭТА СТРОЧКА ЗАПУСКАЕТ ВСЕ КАРТОЧКИ ПРИ СТАРТЕ САЙТА:
+window.onload = function() {
+    renderCatalog();
+};
+
