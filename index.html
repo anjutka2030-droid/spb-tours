@@ -13,26 +13,20 @@
         <p>Выберите тур и забронируйте в 1 клик</p>
     </header>
 
-          <!-- УДОБНАЯ СТРОКА ПОИСКА ЭКСКУРСИЙ -->
+    <!-- УДОБНАЯ СТРОКА ПОИСКА ЭКСКУРСИЙ -->
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Поиск экскурсии (например: Джаз, Мосты, Брат)..." oninput="handleSearch()">
     </div>
 
-
-    <!-- БЛОК КНОПОК-ФИЛЬТРОВ 3 НА 3 -->
-    <div class="filters-container">
-
-         <!-- ОБНОВЛЕННЫЙ СБАЛАНСИРОВАННЫЙ БЛОК ФИЛЬТРОВ 3 НА 3 -->
+    <!-- БЛОК КНОПОК-ФИЛЬТРОВ -->
     <div class="filters-container">
         <button class="btn-filter" onclick="filterCatalog('bus')">Автобусные</button>
         <button class="btn-filter" onclick="filterCatalog('water')">Водные круизы</button>
         <button class="btn-filter" onclick="filterCatalog('kater')">Аренда катеров</button>
-         <button class="btn-filter active" onclick="filterCatalog('all')">Все туры</button>
+        <button class="btn-filter active" onclick="filterCatalog('all')">Все туры</button>
         <button class="btn-filter" onclick="filterCatalog('walk')">Пешеходные</button>
         <button class="btn-filter" onclick="filterCatalog('night')">Развод мостов</button>
     </div>
-
-
 
     <!-- Сетка с карточками -->
     <main id="catalog" class="catalog-grid"></main>
@@ -44,16 +38,16 @@
             <div id="modal-content"></div>
         </div>
     </div>
-                 <!-- БЛОК КОНТАКТОВ И ССЫЛОК НА МЕССЕНДЖЕРЫ В ДВА РЯДА -->
+
+    <!-- БЛОК КОНТАКТОВ И ССЫЛОК НА МЕССЕНДЖЕРЫ В ДВА РЯДА -->
     <div style="max-width: 500px; margin: 40px auto 10px auto; padding: 0 15px; text-align: center;">
         <h3 style="font-size: 16px; color: #1e3246; font-weight: bold; margin-bottom: 5px;">Остались вопросы?</h3>
         <p style="font-size: 13px; color: #5a738e; margin-bottom: 15px;">Свяжитесь с нами напрямую в удобном мессенджере:</p>
         
-        <!-- Сетка мессенджеров 2 на 2 -->
         <div class="footer-contacts-grid">
             <a href="https://max.ru/u/f9LHodD0cOK3PocKFWyYdQXAXDjC7ZnXmNLBC4LMOi9xmpJBCPRkld3FVy4" target="_blank" class="btn-footer-contact">Мессенджер MAX</a>
             <a href="https://t.me/iva1n_f" target="_blank" class="btn-footer-contact">Telegram</a>
-            <a href="https://wa.me/" target="_blank" class="btn-footer-contact">WhatsApp</a>
+            <a href="https://wa.me" target="_blank" class="btn-footer-contact">WhatsApp</a>
             <a href="https://vk.me/club223133955" target="_blank" class="btn-footer-contact">ВКонтакте</a>
         </div>
     </div>
@@ -61,7 +55,7 @@
     <!-- ПОДВАЛ САЙТА С ЮРИДИЧЕСКИМИ ССЫЛКАМИ И ТЕЛЕФОНОМ -->
     <footer style="text-align: center; padding: 20px 15px; margin-top: 25px; border-top: 1px solid #e1eff7; font-size: 11px; color: #5a738e; line-height: 1.8;">
         <p style="margin-bottom: 6px;">&copy; 2026 piter.4u. Все права защищены.</p>
-        <p style="margin-bottom: 8px;">Тел: <a href="tel:+79674331077" style="color: #1e3246; text-decoration: none; font-weight: bold; white-space: nowrap;">+7 (967) 433-10-77</a></p></a></p>
+        <p style="margin-bottom: 8px;">Тел: <a href="tel:+79674331077" style="color: #1e3246; text-decoration: none; font-weight: bold; white-space: nowrap;">+7 (967) 433-10-77</a></p>
         <div style="font-size: 11px;">
             <a href="https://docs.google.com/document/d/1cUJLYDLl0h10ShAJnuHyl-DpLxao0J3kcJwagcy6QfQ/edit?usp=sharing" target="_blank" style="color: #5897ad; text-decoration: none; margin: 0 4px;">Публичная оферта</a> | 
             <a href="https://docs.google.com/document/d/1leG0uxu0nW4ce551PH9rDNvISZ493b7Q5ddZq92UPW8/edit?usp=sharing" target="_blank" style="color: #5897ad; text-decoration: none; margin: 0 4px;">Политика конфиденциальности</a>
@@ -72,6 +66,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
