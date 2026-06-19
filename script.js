@@ -4,7 +4,7 @@
 const MY_VK_LINK = "https://vk.me/club223133955"; 
 const MY_MAX_LINK = "https://max.ru/u/f9LHodD0cOLDDAJK2ok8j8zggjrjuSi2a-rssd0Wd91-_QhO4SmZ6cPgoDU";
 const MY_TG_LINK = "https://t.me/iva1n_f";
-const MY_WA_NUMBER = "https://wa.me/79674331077";
+const MY_WA_NUMBER = "79674331077";
 
 let currentCategory = 'all';
 
