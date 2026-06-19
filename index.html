@@ -8,28 +8,37 @@
 </head>
 <body>
 
-    <header>
+    <!-- ЛИПКАЯ ШАПКА -->
+    <header class="sticky-header">
         <h1>Каталог экскурсий</h1>
-        <p>Выберите тур и забронируйте в 1 клик</p>
+        <p>Выберите тур и забронируйте в 1 клик:</p>
+        
+        <div class="header-messengers">
+            <a href="https://max.ru/u/f9LHodD0cOLDDAJK2ok8j8zggjrjuSi2a-rssd0Wd91-_QhO4SmZ6cPgoDU" target="_blank" class="m-header-btn" title="MAX">MAX</a>
+            <a href="https://vk.me/club223133955" target="_blank" class="m-header-btn" title="ВКонтакте">VK</a>
+            <a href="https://t.me/iva1n_f" target="_blank" class="m-header-btn" title="Telegram">TG</a>
+            <a href="https://wa.me/qr/NNOEXECQMIRKC1" target="_blank" class="m-header-btn" title="WhatsApp">WA</a>
+        </div>
     </header>
 
-    <!-- УДОБНАЯ СТРОКА ПОИСКА ЭКСКУРСИЙ -->
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Поиск экскурсии (например: Джаз, Мосты, Брат)..." oninput="handleSearch()">
-    </div>
+     <div class="main-wrapper">
+        <!-- УДОБНАЯ СТРОКА ПОИСКА ЭКСКУРСИЙ -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Поиск экскурсии (например: Джаз, Мосты)..." oninput="handleSearch()">
+        </div>
 
-    <!-- БЛОК КНОПОК-ФИЛЬТРОВ -->
-    <div class="filters-container">
-        <button class="btn-filter" onclick="filterCatalog('bus')">Автобусные</button>
-        <button class="btn-filter" onclick="filterCatalog('water')">Водные круизы</button>
-        <button class="btn-filter" onclick="filterCatalog('kater')">Аренда катеров</button>
-        <button class="btn-filter active" onclick="filterCatalog('all')">Все туры</button>
-        <button class="btn-filter" onclick="filterCatalog('walk')">Пешеходные</button>
-        <button class="btn-filter" onclick="filterCatalog('night')">Развод мостов</button>
-    </div>
+        <!-- ИЗМЕНЕННЫЙ ПОРЯДОК КНОПОК-ФИЛЬТРОВ -->
+        <div class="filters-container">
+            <button class="btn-filter" onclick="filterCatalog('bus')">Автобусные</button>
+            <button class="btn-filter" onclick="filterCatalog('walk')">Пешеходные</button>
+            <button class="btn-filter" onclick="filterCatalog('night')">Развод мостов</button>
+            <button class="btn-filter active" onclick="filterCatalog('all')">Все туры</button>
+            <button class="btn-filter" onclick="filterCatalog('water')">Водные круизы</button>
+            <button class="btn-filter" onclick="filterCatalog('kater')">Аренда катеров</button>
+        </div>
 
-    <!-- Сетка с карточками -->
-    <main id="catalog" class="catalog-grid"></main>
+        <main id="catalog" class="catalog-grid"></main>
+    </div>
 
     <!-- Элемент для плавного всплывающего окна подробностей -->
     <div id="modal" class="modal-overlay">
@@ -39,27 +48,22 @@
         </div>
     </div>
 
-    <!-- БЛОК КОНТАКТОВ И ССЫЛОК НА МЕССЕНДЖЕРЫ В ДВА РЯДА -->
-    <div style="max-width: 500px; margin: 40px auto 10px auto; padding: 0 15px; text-align: center;">
-        <h3 style="font-size: 16px; color: #1e3246; font-weight: bold; margin-bottom: 5px;">Остались вопросы?</h3>
-        <p style="font-size: 13px; color: #5a738e; margin-bottom: 15px;">Свяжитесь с нами напрямую в удобном мессенджере:</p>
+    <!-- ПОДВАЛ САЙТА С ОБНОВЛЕННЫМИ КНОПКАМИ -->
+<!-- ПОДВАЛ САЙТА -->
+    <footer style="text-align: center; padding: 30px 15px; margin-top: 40px; border-top: 1px solid #eef4f8; font-size: 11px; color: #5a738e; line-height: 1.8;">
         
-        <div class="footer-contacts-grid">
-            <a href="https://max.ru/u/f9LHodD0cOLDDAJK2ok8j8zggjrjuSi2a-rssd0Wd91-_QhO4SmZ6cPgoDU" target="_blank" class="btn-footer-contact">Мессенджер MAX</a>
-            <a href="https://t.me/iva1n_f" target="_blank" class="btn-footer-contact">Telegram</a>
-            <a href="https://wa.me" target="_blank" class="btn-footer-contact">WhatsApp</a>
-            <a href="https://vk.me/club223133955" target="_blank" class="btn-footer-contact">ВКонтакте</a>
+        <div style="margin-bottom: 25px; padding: 0 10px;">
+            <p style="font-size: 14px; color: #1e3246; font-weight: bold; margin-bottom: 5px;">Мы в соцсетях:</p>
+            <div class="footer-social-grid">
+                <a href="https://max.ru/id470329595100_biz" target="_blank" class="footer-btn">MAX-канал</a>
+                <a href="https://vk.ru/club223133955" target="_blank" class="footer-btn">Группа ВКонтакте</a>
+                <a href="https://t.me/piter4uspb" target="_blank" class="footer-btn">Телеграм-канал</a>
+                <a href="https://www.instagram.com/piter.4u?igsh=cjl1d3h6azRiYnA4" target="_blank" class="footer-btn">Instagram</a>
+            </div>
         </div>
-    </div>
 
-    <!-- ПОДВАЛ САЙТА С ЮРИДИЧЕСКИМИ ССЫЛКАМИ И ТЕЛЕФОНОМ -->
-    <footer style="text-align: center; padding: 20px 15px; margin-top: 25px; border-top: 1px solid #e1eff7; font-size: 11px; color: #5a738e; line-height: 1.8;">
         <p style="margin-bottom: 6px;">&copy; 2026 piter.4u. Все права защищены.</p>
         <p style="margin-bottom: 8px;">Тел: <a href="tel:+79674331077" style="color: #1e3246; text-decoration: none; font-weight: bold; white-space: nowrap;">+7 (967) 433-10-77</a></p>
-        <div style="font-size: 11px;">
-            <a href="https://docs.google.com/document/d/1cUJLYDLl0h10ShAJnuHyl-DpLxao0J3kcJwagcy6QfQ/edit?usp=sharing" target="_blank" style="color: #5897ad; text-decoration: none; margin: 0 4px;">Публичная оферта</a> | 
-            <a href="https://docs.google.com/document/d/1leG0uxu0nW4ce551PH9rDNvISZ493b7Q5ddZq92UPW8/edit?usp=sharing" target="_blank" style="color: #5897ad; text-decoration: none; margin: 0 4px;">Политика конфиденциальности</a>
-        </div>
     </footer>
 
     <script src="data.js"></script>
