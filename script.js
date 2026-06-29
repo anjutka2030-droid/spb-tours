@@ -89,6 +89,24 @@ function toggleAccordion(element) {
         item.classList.add('active');
     }
 }
+// УМНАЯ ФУНКЦИЯ КОПИРОВАНИЯ ССЫЛКИ НА ТУР
+function shareTour(id) {
+    const shareUrl = window.location.origin + window.location.pathname + '?tour=' + id;
+    navigator.clipboard.writeText(shareUrl).then(() => {
+        const shareBtn = document.getElementById('share-btn');
+        if (shareBtn) {
+            shareBtn.innerText = "✅ Ссылка скопирована!";
+            shareBtn.style.backgroundColor = "#25d366";
+            shareBtn.style.color = "#ffffff";
+            setTimeout(() => {
+                shareBtn.innerText = "🔗 Поделиться туром";
+                shareBtn.style.backgroundColor = "transparent";
+                shareBtn.style.color = "#5897ad";
+            }, 2000);
+        }
+    }).catch(err => { alert("Не удалось скопировать ссылку, скопируйте её из адресной строки."); });
+}
+
 
 // ==========================================================================
 // ОТКРЫТИЕ МОДАЛЬНОГО ОКНА ЭКСКУРСИИ
@@ -104,6 +122,7 @@ function openModal(id) {
     modalContent.innerHTML = `
         <h2 style="font-size:18px; color:#1e3246; font-weight:bold;">${tour.title}</h2>
         <div style="font-size:13px; color:#3a768c; font-weight:bold; margin-top:4px;">${tour.trigger}</div>
+        <button id="share-btn" onclick="shareTour(${tour.id})" style="margin-top:10px; background:transparent; border:1px solid #5897ad; color:#5897ad; padding:6px 12px; border-radius:20px; font-size:11px; font-weight:bold; cursor:pointer; width:auto; transition:all 0.2s ease;">🔗 Поделиться туром</button>
         <img src="${tour.image}" alt="${tour.title}" style="width:100%; height:180px; object-fit:cover; border-radius:8px; margin-top:10px; display:block;">
         <div style="font-size:13px; color:#1e3246; background:#f4f9fc; padding:8px; border-radius:6px; margin-top:10px; font-weight:600;">📅 Расписание: ${tour.schedule}</div>
         <div class="modal-desc-text" style="color: #1e3246 !important;">${tour.description}</div>
@@ -127,6 +146,7 @@ function openModal(id) {
 
 function closeModal() {
     document.getElementById('modal').classList.remove('active');
+    window.history.replaceState({}, document.title, window.location.pathname);
 }
 
 window.addEventListener('click', function(event) {
@@ -135,4 +155,12 @@ window.addEventListener('click', function(event) {
 
 window.onload = function() {
     renderCatalog();
+    
+    // ВОТ ЭТОТ КУСОЧЕК ДОПИШИ ВНУТРЬ ONLOAD
+    const urlParams = new URLSearchParams(window.location.search);
+    const tourId = urlParams.get('tour');
+    if (tourId) {
+        setTimeout(() => { openModal(parseInt(tourId)); }, 300);
+    }
 };
+
