@@ -122,7 +122,6 @@ function openModal(id) {
     modalContent.innerHTML = `
         <h2 style="font-size:18px; color:#1e3246; font-weight:bold;">${tour.title}</h2>
         <div style="font-size:13px; color:#3a768c; font-weight:bold; margin-top:4px;">${tour.trigger}</div>
-        <button id="share-btn" onclick="shareTour(${tour.id})" style="margin-top:10px; background:transparent; border:1px solid #5897ad; color:#5897ad; padding:6px 12px; border-radius:20px; font-size:11px; font-weight:bold; cursor:pointer; width:auto; transition:all 0.2s ease;">🔗 Поделиться туром</button>
         <img src="${tour.image}" alt="${tour.title}" style="width:100%; height:180px; object-fit:cover; border-radius:8px; margin-top:10px; display:block;">
         <div style="font-size:13px; color:#1e3246; background:#f4f9fc; padding:8px; border-radius:6px; margin-top:10px; font-weight:600;">📅 Расписание: ${tour.schedule}</div>
         <div class="modal-desc-text" style="color: #1e3246 !important;">${tour.description}</div>
@@ -139,6 +138,8 @@ function openModal(id) {
                 <a href="${MY_VK_LINK}?ref_source=${message}" target="_blank" class="m-grid-btn" style="background-color: #5897ad; color: #ffffff !important; border: none;">ВКонтакте</a>
             </div>
         </div>
+        <button id="share-btn" onclick="shareTour(${tour.id})" style="margin: 10px auto 0 auto; background: transparent; border: 1px solid #5897ad; color: #5897ad; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; display: block; width: 100%; transition: all 0.2s ease;">Поделиться ссылкой 🔗</button>
+
         <button onclick="closeModal()" style="width:100%; margin-top:15px; background: transparent; border:1.5px solid #5897ad; color:#5897ad; padding:12px; border-radius:8px; font-weight:bold; font-size:13px; cursor:pointer; transition: all 0.2s ease;">Назад к каталогу</button>`;
     
     document.getElementById('modal').classList.add('active');
