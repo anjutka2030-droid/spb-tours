@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap:https://anjutka2030-droid.github.io/spb-tours/sitemap.xml
