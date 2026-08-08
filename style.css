@@ -17,7 +17,7 @@ header p{font-size:13px;color:#5a738e;margin-bottom:12px;text-align:center;}
 /* ЛЕНТА ФИЛЬТРОВ И НАСТРОЙКА КНОПОК (ВЫШЕ И УЖЕ) */
 .filters-container{display:flex!important;gap:8px!important;padding:0 15px 15px 15px!important;margin-bottom:15px!important;overflow-x:auto!important;white-space:nowrap!important;width:100%!important;-webkit-overflow-scrolling:touch;} 
 .filters-container::-webkit-scrollbar{display:none;} 
-.btn-filter{display:inline-block!important;background-color:transparent;color:#5897ad;border:1.5px solid #e1eff7;padding:10px 14px!important;border-radius:20px;font-size:13px!important;font-weight:600;text-align:center!important;cursor:pointer;transition:all 0.2s ease;flex-shrink:0;-webkit-tap-highlight-color:transparent;width:26%!important;} 
+.btn-filter{display:inline-block!important;background-color:transparent;color:#5897ad;border:1.5px solid #e1eff7;padding:10px 14px!important;border-radius:20px;font-size:13px!important;font-weight:600;text-align:center!important;cursor:pointer;transition:all 0.2s ease;flex-shrink:0;-webkit-tap-highlight-color:transparent;min-width:24%!important;text-align: center !important;} 
 .btn-filter.active{background-color:#ff6f00;color:#ffffff;border-color:#ff6f00;box-shadow:0 4px 10px rgba(255,111,0,0.2);} 
 
 .catalog-grid{display:grid;grid-template-columns:repeat(2,1fr)!important;gap:12px!important;padding:0 15px!important;width:100%!important;} 
