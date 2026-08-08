@@ -18,7 +18,8 @@ function renderCatalog(filterCategory = 'all', searchQuery = '') {
         } 
         const oldPriceHtml = (tour.priceOld && tour.priceOld !== tour.priceNew) ? `<div class="price-old">${tour.priceOld} ₽</div>` : ''; 
         const detailsHtml = (tour.priceLgt || tour.priceChd) ? `<div class="price-details">${tour.priceLgt ? `<span>Льг: ${tour.priceLgt} ₽</span>` : '<span></span>'}${tour.priceChd ? `<span>Дет: ${tour.priceChd} ₽</span>` : ''}</div>` : ''; 
-        catalogContainer.innerHTML += `<div class="card" onclick="openModal(${tour.id})" style="cursor: pointer;"><img src="${tour.image}" alt="${tour.title}" class="card-img"><div class="card-content"><div class="card-title">${tour.title}</div><div class="card-trigger">${tour.trigger}</div><div class="price-container"><div style="font-size:10px; color:#1e3246; font-weight:600; margin-bottom:4px; padding-bottom:4px; border-bottom:1px dashed #e1eff7;">🕒 ${tour.schedule}</div>${oldPriceHtml}<div class="price-highlight">${tour.priceNew} ₽</div>${detailsHtml}</div><div class="card-buttons"><span class="btn-book">Подробнее</span></div></div></div>`; 
+        catalogContainer.innerHTML += `<div class="card" onclick="openModal(${tour.id})" style="cursor: pointer;"><img src="${tour.image}" alt="${tour.title}" class="card-img"><div class="card-content"><div class="card-title">${tour.title}</div><div class="card-trigger">${tour.trigger}</div><div class="price-container"><div style="font-size:10px; color:#1e3246; font-weight:600; margin-bottom:4px; padding-bottom:4px; border-bottom:1px dashed #e1eff7;">🕒 ${tour.schedule}</div><div style="display:flex; align-items:baseline; gap:6px;">${oldPriceHtml ? `<span class="price-old">${tour.priceOld} ₽</span>` : ''}<span class="price-highlight">${tour.priceNew} ₽</span></div>${detailsHtml}</div>
+<div class="card-buttons"><span class="btn-book">Подробнее</span></div></div></div>`; 
     }); 
 }
 
