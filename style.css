@@ -47,6 +47,14 @@ header p{font-size:13px;color:#5a738e;margin-bottom:12px;text-align:center;}
 
 /* Правило, убирающее стрелочку у прямых ссылок в меню (каталог катеров) */
 .accordion-header.link-only::after { content: none !important; }
+.site-logo-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #e1eff7;
+    flex-shrink: 0;
+}
 
 .accordion-content{max-height:0;overflow:hidden;transition:all 0.3s ease;padding:0 16px;font-size:13px;color:#4a5568;line-height:1.5;} 
 .accordion-item.active .accordion-content{max-height:2000px;padding:14px 16px;border-top:1px solid #eef4f8;} 
